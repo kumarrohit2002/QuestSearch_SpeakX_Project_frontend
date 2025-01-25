@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route} from "react-router-dom";
 import QuestionProvider from './context/QuestionContext';
 import HomePage from './page/HomePage';
 import McqPage from './page/McqPage';
@@ -15,8 +15,7 @@ const App = () => {
   return (
     <QuestionProvider>
       <Routes>
-        <Route path="/" element={<Navigate to="/home" />} />
-        <Route path="/home" element={<HomePage />} />
+        <Route path="/" element={<HomePage />} />
 
         <Route path="/allquestionPage" element={<AllQuestionPage />} />
         <Route path="/content_onlypage" element={<Content_OnlyPage />} />
