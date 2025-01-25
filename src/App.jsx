@@ -8,7 +8,7 @@ import AllQuestionPage from './page/AllQuestionPage';
 import AnagramPage from './page/AnagramPage';
 import Mcq from './components/Mcq';
 import READ_ALONG from './components/READ_ALONG';
-import CONTENT_ONLY from './components/Content_Only';
+import CONTENT_ONLY from './components/CONTENT_ONLY';
 import Anagram from './components/Anagram';
 
 const App = () => {
