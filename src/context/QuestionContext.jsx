@@ -7,16 +7,18 @@ export const QuestionContext = createContext();
 export const QuestionProvider = ({ children }) => {
   const [questions, setQuestions] = useState([]);
   const [selectedQuestion, setSelectedQuestion] = useState(null);
+  const [pagination,setPagination]=useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const searchQuestions = async (query) => {
+  const searchQuestions = async (query,page) => {
     setLoading(true);
     setError(null);
     try {
       setQuestions(null);
-      const results = await searchQuestionsFromService(query); 
-      setQuestions(results);
+      const {questions,pagination} = await searchQuestionsFromService(query,page); 
+      setPagination(pagination);
+      setQuestions(questions);
     } catch (err) {
       setError(err.message || 'Error fetching questions');
     } finally {
@@ -29,7 +31,7 @@ export const QuestionProvider = ({ children }) => {
     setError(null);
     try {
       const question = await fetchQuestionById(questionId); 
-      setSelectedQuestion(question); 
+      setSelectedQuestion(question);
     } catch (err) {
       setError(err.message || 'Error fetching question by ID');
     } finally {
@@ -50,6 +52,7 @@ export const QuestionProvider = ({ children }) => {
         searchQuestions,
         getQuestionById,
         clearSelectedQuestion,
+        pagination,
         loading,
         error,
       }}

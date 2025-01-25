@@ -1,4 +1,8 @@
-import React, { useState } from 'react';
+import { useContext, useState } from 'react';
+import { QuestionContext } from '../context/QuestionContext';
+import NavBar from './NavBar';
+import Loader from './Loader';
+
 
 // Block Component for individual letters
 const Block = ({ text, onClick }) => {
@@ -57,22 +61,30 @@ const AnagramGame = ({ blocks, solution, anagramType }) => {
     </div>
   );
 };
-
+ 
 
 // Main ANAGRAM Component
-const Anagram = ({ question }) => {
+const Anagram = () => {
+  const {selectedQuestion}=useContext(QuestionContext);
+  const question=selectedQuestion;
   if (!question) {
-    return <p>Loading question...</p>;
+    return <div>
+      <NavBar/>
+      <Loader/>
+    </div>
   }
 
   return (
     <div>
+      <NavBar/>
+      <div>
       <h3 className="text-2xl font-bold mb-4 bg-red-200">{question.title}</h3>
       <AnagramGame 
         blocks={question.blocks} 
         solution={question.solution} 
         anagramType={question.anagramType} 
       />
+    </div>
     </div>
   );
 };
