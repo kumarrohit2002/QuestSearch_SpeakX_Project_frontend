@@ -55,7 +55,7 @@ const Content_OnlyPage = () => {
                                     <h3
                                         onClick={() => {
                                             getQuestionById(question._id);
-                                            navigate('/contentonly');
+                                            navigate('/content_only');
                                         }}
                                         className="text-md px-2 bg-gray-100 rounded-md cursor-pointer"
                                     >

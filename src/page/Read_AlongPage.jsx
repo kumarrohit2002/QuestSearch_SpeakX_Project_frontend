@@ -55,7 +55,7 @@ const Read_AlongPage = () => {
                                     <h3
                                         onClick={() => {
                                             getQuestionById(question._id);
-                                            navigate('/readonly');
+                                            navigate('/read_along');
                                         }}
                                         className="text-md px-2 bg-gray-100 rounded-md cursor-pointer"
                                     >
